@@ -1,0 +1,13 @@
+fungsi listy smeua database di memory:
+
+Statement newstmt = conn.createStatement();
+ResultSet rs = newstmt.executeQuery("SELECT * FROM INFO_DATA");
+
+while (rs.next()) {
+    String rowId = rs.getString("rowid");
+    String tbp = rs.getString("notbp");
+    String tanggal = rs.getString("tanggal");
+
+    String[] newData = {rowId, tbp, tanggal};
+    this.driverSignal.onAddTable(newData);
+}
